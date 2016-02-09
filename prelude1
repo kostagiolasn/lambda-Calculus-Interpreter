@@ -1,0 +1,54 @@
+# A simple prelude for the Lambda Calculus Interpreter
+# Vangelis Mihalopoulos
+# AM: 0182000-00178
+
+
+# booleans
+:let true (\x -> (\y -> x))
+:let false (\x -> (\y -> y))
+:let cond (\a -> (\b -> (\c -> ((a b) c))))
+
+# boolean operators
+:let not (\x -> (((cond x) false) true))
+:let and (\x -> (\y -> ((x y) false)))
+:let or (\x -> (\y -> ((x true) y)))
+
+# pairs
+:let pair (\x -> (\y -> (\z -> ((z x) y))))
+:let fst (\n -> (n true))
+:let snd (\n -> (n false))
+
+# The twice function
+#:let twice (\f -> (\x -> (f (f x))))
+
+# Church Numerals Base
+:let zero     (\f -> (\z -> z))
+:let succ     (\n -> (\f -> (\x -> ((n f) (f x)))))
+
+# define some numerals to play with
+:let one      (succ zero)
+:let two      (succ one)
+:let three    (succ two)
+:let four     (succ three)
+:let five     (succ four)
+
+# Numerical Operations on Church Numerals
+:let add      (\n -> (\m -> (\f -> (\x -> ((n f) ((m f) x))))))
+:let mul      (\n -> (\m -> (\f -> (n (m f)))))
+:let exp      (\n -> (\m -> (m n)))
+
+# general numeral utility bindings
+:let unchurch (\n -> ((n (\x.((+ 1) x))) 0))
+:let iszero   (\n -> ((n (\x -> false)) true))
+:let zeropair ((pair zero) zero)
+:let pred     (\x -> (\y -> (\z -> (((x (\p -> (\q -> (q  (p y))))) (\y -> z)) (\x -> x)))))
+
+#A non-terminating expression
+:let nonterminate  ((\x -> (x x)) (\x -> (x x)))
+
+# A fixpoint combinator
+:let fix      (\f -> ((\x -> (f (x x)))(\x -> (f (x x)))))
+
+# Example of using fixpoint to define recursive functions, e.g factorial
+:let factorial (fix (\f -> (\n -> (((cond (iszero n)) one) ((mul n) (f (pred n)))))))
+
