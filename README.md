@@ -94,19 +94,23 @@ The following text will appear:\
 Lambda Interpreter  -  Nikos-Stefanos Kostagiolas, sdi1100039@di.uoa.gr                                                                      |
 
      Commands        Description                                         
-    :read <file>    Read input from filename <file>                      
-    :prelude        Show the currently binded variables                  
-    :details        Print details for every normalization (redexes, terms, etc)                                               
-    :nodetails      Don't print details for normalizations.              
-    :limit <num>    Perform a maximum of <num> reductions for every normalization                                                  :nolimit        No limit in number of reductions (same with ":limit 0")                                                        :let <i> <t>    Bind variable <i> with lambda-term <t>. Every following                                                   
-        occurence of  <i> will be replaced by lambda-term <t>                                                                  
-    :unlet <var>    Unbind variable <var>                                
+    :read <file>    Read input from filename <file>
+    :prelude        Show the currently binded variables
+    :details        Print details for every normalization (redexes, terms, etc)
+    :nodetails      Don't print details for normalizations.
+    :limit <num>    Perform a maximum of <num> reductions for every normalization
+    :nolimit        No limit in number of reductions (same with ":limit 0")
+    :let <i> <t>    Bind variable <i> with lambda-term <t>. Every following
+    occurence of  <i> will be replaced by lambda-term <t>                                                                  
+    :unlet <var>    Unbind variable <var>      
     :unletall       Unbind all variables currently binded                
     :reduce <var>   Normalize binded variable <var>
     :dot            Use "dot" notation for output, example:  (\x.x)
     :arrow          Use "arrow" notation for output, example: (\x -> x)
-    :exit           Exit Interpreter, if in input from file then close file                                                        :help           Show this help message
-    :settings       Print all the interpreter setting (dot,details,limit,prompt)                                                   :prompt         Enable prompt
+    :exit           Exit Interpreter, if in input from file then close file
+    :help           Show this help message
+    :settings       Print all the interpreter setting (dot,details,limit,prompt)  
+    :prompt         Enable prompt
     :noprompt       Disable prompt
     
     lambda>
